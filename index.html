@@ -11,100 +11,139 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ps-3 navbar-sticky-top">
-        <a class="navbar-brand" href="#">Tax Calculator</a>
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#withholding-tax">Withholding Tax</a></li>
-            <li class="nav-item"><a class="nav-link" href="#payable-tax">Payable Tax</a></li>
-            <li class="nav-item"><a class="nav-link" href="#income-tax">Income Tax</a></li>
-            <li class="nav-item"><a class="nav-link" href="#sscl-tax">SSCL Tax</a></li>
-            <li class="nav-item"><a class="nav-link" href="#leasing-calculations">Leasing Calculations</a></li>
-
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-calculator-fill me-2"></i>Tax Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-fill me-1"></i>Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#withholding-tax"><i
+                                class="bi bi-cash-stack me-1"></i>Withholding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#payable-tax"><i
+                                class="bi bi-wallet2 me-1"></i>Payable</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#income-tax"><i
+                                class="bi bi-graph-up me-1"></i>Income</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sscl-tax"><i
+                                class="bi bi-shield-check me-1"></i>SSCL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leasing-calculations"><i
+                                class="bi bi-car-front me-1"></i>Leasing</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <div class="container mt-4">
-        <section id="home" class="h-100 mt-5 bg-info" >
-            <h1 class="mb-4">Welcome to the Web Based Tax Calculator</h1>
-            <p>This application helps you calculate various types of taxes including Withholding Tax, Payable Tax, Income Tax, SSCL Tax, and Leasing Calculations. Use the navigation bar to access different sections.</p>
+
+    <div class="container">
+        <!-- HOME -->
+        <section id="home" class="fade-in">
+            <div class="icon-badge mb-4"><i class="bi bi-calculator-fill"></i></div>
+            <h1>Tax Calculator</h1>
+            <p>Your complete solution for calculating Withholding Tax, Payable Tax, Income Tax, SSCL, and Leasing Plans.
+                Use the navigation to explore each calculator.</p>
         </section>
 
-        <section id="withholding-tax" class="mt-5 bg-danger" >
+        <!-- WITHHOLDING TAX -->
+        <section id="withholding-tax" class="fade-in">
+            <div class="icon-badge"><i class="bi bi-cash-stack"></i></div>
             <h2>Withholding Tax Calculator</h2>
-            <form id="withholding-tax-form">    
+            <form id="withholding-tax-form">
                 <div class="mb-3">
-                    <label for="withholding-tax-income" class="form-label">Annual Income:</label>
-                    <input type="number" class="form-control" id="withholding-tax-income" required>
+                    <label class="form-label">Select Tax Type</label>
+                    <select class="form-select" id="withholding-type" required>
+                        <option value="">-- Select Type --</option>
+                        <option value="rent">Rent (10% above Rs.100,000)</option>
+                        <option value="bank">Bank Interest (5%)</option>
+                        <option value="dividend">Dividend (14% above Rs.100,000)</option>
+                    </select>
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Calculate Withholding Tax</button>
+                <div class="mb-4">
+                    <label for="withholding-income" class="form-label"><i
+                            class="bi bi-currency-dollar me-2"></i>Amount</label>
+                    <input type="number" class="form-control" id="withholding-income" placeholder="Enter amount"
+                        required>
+                </div>
+                <button type="button" class="btn btn-primary" id="calc-withholding">Calculate</button>
+                <button type="reset" class="btn btn-secondary ms-2">Clear</button>
             </form>
-            <div id="withholding-tax-result" class="mt-3">
-                <label for="withholding-tax-output">Withholding Tax:</label>
+            <div id="withholding-tax-result" class="result-box" style="display: none;">
+                <label>Withholding Tax Result:</label>
                 <div id="withholding-tax-output"></div>
             </div>
         </section>
 
-        <section id="payable-tax" class="mt-5 ">
-            <h2>Payable Tax Calculator</h2>
+        <!-- PAYABLE TAX -->
+        <section id="payable-tax" class="fade-in">
+            <div class="icon-badge"><i class="bi bi-wallet2"></i></div>
+            <h2>Payable Tax Calculator (Monthly Salary)</h2>
             <form id="payable-tax-form">
-                <div class="mb-3">
-                    <label for="annual-income" class="form-label">Annual Income:</label>
-                    <input type="number" class="form-control" id="annual-income" required>
-                </div>
-                
-                <button type="submit" class="btn btn-primary">Calculate Payable Tax</button>
+                <label class="form-label"><i class="bi bi-currency-dollar me-2"></i>Monthly Salary</label>
+                <input type="number" class="form-control mb-3" id="payable-income" placeholder="Enter monthly salary"
+                    required>
+                <button type="button" class="btn btn-primary" id="calc-payable">Calculate</button>
+                <button type="reset" class="btn btn-secondary ms-2">Clear</button>
             </form>
-            <div id="payable-tax-result" class="mt-3"></div>
+            <div id="payable-tax-result" class="result-box" style="display: none;"></div>
         </section>
 
-        <section id="income-tax" class="mt-5">
-            <h2>Income Tax Calculator</h2>
+        <!-- INCOME TAX -->
+        <section id="income-tax" class="fade-in">
+            <div class="icon-badge"><i class="bi bi-graph-up"></i></div>
+            <h2>Income Tax Calculator (Annual)</h2>
             <form id="income-tax-form">
-                <div class="mb-3">
-                    <label for="income" class="form-label">Annual Income:</label>
-                    <input type="number" class="form-control" id="income" required>
-                </div>
-                <div class="mt-4 ps-3 pt-2">
-                <button type="submit" class="btn btn-primary">Calculate Income Tax</button>
-                </div>
-                
+                <label class="form-label"><i class="bi bi-currency-dollar me-2"></i>Annual Income</label>
+                <input type="number" class="form-control mb-3" id="income" placeholder="Enter your annual income"
+                    required>
+                <button type="button" class="btn btn-primary" id="calc-income">Calculate</button>
+                <button type="reset" class="btn btn-secondary ms-2">Clear</button>
             </form>
-            <div id="income-tax-result" class="mt-3">
-                <label for="income-tax-output">Income Tax:</label>
+            <div id="income-tax-result" class="result-box" style="display: none;">
+                <label>Income Tax Result:</label>
                 <div id="income-tax-output"></div>
             </div>
         </section>
 
-        <section id="sscl-tax" class="mt-5">
+        <!-- SSCL TAX -->
+        <section id="sscl-tax" class="fade-in">
+            <div class="icon-badge"><i class="bi bi-shield-check"></i></div>
             <h2>SSCL Tax Calculator</h2>
-            <form id="sscl-tax-form" class="d-flex flex-row align-items-start">
-                <div class="mb-3 w-75">
-                    <label for="sscl-income" class="form-label">Annual Income:</label>
-                    <input type="number" class="form-control" id="sscl-income" required>
-                </div>
-                <div class="mt-4 ps-3 pt-2">
-                    <button type="submit" class="btn btn-primary">Calculate SSCL Tax</button>
-                </div>
+            <form id="sscl-tax-form">
+                <label class="form-label"><i class="bi bi-currency-dollar me-2"></i>Value</label>
+                <input type="number" class="form-control mb-3" id="sscl-value" placeholder="Enter value" required>
+                <button type="button" class="btn btn-primary" id="calc-sscl">Calculate</button>
+                <button type="reset" class="btn btn-secondary ms-2">Clear</button>
             </form>
-            <div id="sscl-tax-result" class="mt-3">
-                <label for="sscl-tax-output">SSCL Tax:</label>
+            <div id="sscl-tax-result" class="result-box" style="display: none;">
+                <label>SSCL Tax Result:</label>
                 <div id="sscl-tax-output"></div>
             </div>
         </section>
 
-        <section id="leasing-calculations" class="mt-5">
-            <h2>Leasing Calculations</h2>
-            <form id="leasing-calculations-form">
-                <div class="mb-3">
-                    <label for="leasing-income" class="form-label">Annual Income:</label>
-                    <input type="number" class="form-control" id="leasing-income" required>
-                </div>
-                
-                <button type="submit" class="btn btn-primary">Calculate Leasing Tax</button>
+        <!-- LEASING -->
+        <section id="leasing-calculations" class="fade-in">
+            <div class="icon-badge"><i class="bi bi-car-front"></i></div>
+            <h2>Leasing Calculator</h2>
+            <form id="leasing-form">
+                <label class="form-label">Loan Amount</label>
+                <input type="number" class="form-control mb-3" id="loan-amount" placeholder="Enter loan amount"
+                    required>
+                <label class="form-label">Annual Interest Rate (%)</label>
+                <input type="number" class="form-control mb-3" id="interest-rate" placeholder="e.g., 10" required>
+                <button type="button" class="btn btn-primary" id="calc-leasing">Calculate EMI</button>
+                <button type="reset" class="btn btn-secondary ms-2">Clear</button>
             </form>
-            <div id="leasing-calculations-result" class="mt-3"></div>
+            <div id="leasing-result" class="result-box" style="display: none;">
+                <label>Leasing Plan Comparison:</label>
+                <div id="leasing-output"></div>
+            </div>
         </section>
+    </div>
+
+    <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>
