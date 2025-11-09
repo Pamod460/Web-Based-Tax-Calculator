@@ -100,9 +100,7 @@ document.getElementById('calc-payable').addEventListener('click', () => {
     result.style.display = 'block';
 });
 
-/* =======================
-   INCOME TAX (Annual)
-   ======================= */
+
 document.getElementById('calc-income').addEventListener('click', () => {
     const income = parseFloat(document.getElementById('income').value);
     const resultBox = document.getElementById('income-tax-result');
@@ -161,9 +159,6 @@ document.getElementById('calc-income').addEventListener('click', () => {
     resultBox.style.display = 'block';
 });
 
-/* =======================
-   SSCL TAX
-   ======================= */
 document.getElementById('calc-sscl').addEventListener('click', () => {
     const val = parseFloat(document.getElementById('sscl-value').value);
     const result = document.getElementById('sscl-tax-result');
